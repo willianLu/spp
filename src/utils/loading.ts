@@ -1,7 +1,6 @@
 import { createApp } from 'vue'
-import { showLoadingToast } from 'vant'
-import 'vant/es/toast/style'
-import LoadingOverlay from './overlay.vue'
+import { ElLoading } from 'element-plus'
+import LoadingOverlay from '@/components/loading-overlay.vue'
 import { isObject, isNumber, isString } from '@/utils/util'
 
 /**
@@ -12,14 +11,14 @@ const loadingOverlay = createApp(LoadingOverlay).mount(
 )
 
 // loading 弹窗实例
-let LoadingToast: ReturnType<typeof showLoadingToast> | null = null
+let LoadingToast: ReturnType<typeof ElLoading.service> | null = null
 
 // 显示loading弹层
 function showLoading(message: string) {
-  LoadingToast = showLoadingToast({
-    message,
-    duration: 0,
-    forbidClick: true
+  LoadingToast = ElLoading.service({
+    lock: true,
+    text: message,
+    background: 'rgba(0, 0, 0, 0.7)'
   })
 }
 // timeout延迟id
@@ -42,6 +41,13 @@ interface LoadingOptions {
   message?: string
   delayTime?: number
   immediate?: boolean
+}
+// 关闭loading弹层
+function closeLoading() {
+  if (LoadingToast) {
+    LoadingToast.close()
+    LoadingToast = null
+  }
 }
 
 const Loading = {
@@ -75,14 +81,18 @@ const Loading = {
       }, delayTime)
     }
   },
-  hide() {
+  hide(delayClose = 300) {
     // 关闭延迟操作
     closeTimeout()
     // 移除透明遮罩层
     document.body.removeChild(loadingOverlay.$el)
-    if (LoadingToast) {
-      LoadingToast.close()
-      LoadingToast = null
+    // 是否延迟关闭，避免闪烁现象
+    if (delayClose) {
+      setTimeout(() => {
+        closeLoading()
+      }, delayClose)
+    } else {
+      closeLoading()
     }
   }
 }

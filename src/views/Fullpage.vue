@@ -2,7 +2,7 @@
   <PageContainer>
     <PageHeader></PageHeader>
     <!-- 最外层容器 -->
-    <Fullpage :page-count="ysImage.length">
+    <Fullpage>
       <!-- 内层容器 -->
       <div
         v-for="(item, index) in ysImage"
@@ -14,8 +14,7 @@
   </PageContainer>
 </template>
 <script setup lang="ts">
-import { ref, watchEffect, watch, computed } from 'vue'
-import { useWindowSize } from '@vueuse/core'
+import { ref } from 'vue'
 import PageContainer from '@/components/page/container.vue'
 import PageHeader from '@/components/page/header.vue'
 import Fullpage from '@/components/fullpage/index.vue'

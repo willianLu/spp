@@ -13,6 +13,7 @@ declare module '@vue/runtime-core' {
     Fullpage: typeof import('./src/components/fullpage/index.vue')['default']
     Header: typeof import('./src/components/page/header.vue')['default']
     Layout: typeof import('./src/components/page/layout.vue')['default']
+    LoadingOverlay: typeof import('./src/components/loading-overlay.vue')['default']
     Main: typeof import('./src/components/page/main.vue')['default']
     Nav: typeof import('./src/components/page/nav.vue')['default']
     Overlay: typeof import('./src/components/loading/overlay.vue')['default']

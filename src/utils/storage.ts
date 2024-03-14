@@ -1,7 +1,14 @@
 import ms from './ms'
 import { isObject } from './util'
-import Env from '@/env'
-import { StorageOptions, StorageData } from '@/types'
+
+export interface StorageOptions {
+  maxAge?: number | string
+  timestamp?: number
+}
+
+export type StorageData = {
+  value: any
+} & StorageOptions
 
 /**
  * @description 本地存储扩展规则
@@ -38,14 +45,12 @@ export const local = {
     try {
       data = res ? JSON.parse(res) : {}
     } catch (error) {
-      if (!Env.isProd) {
-        console.error(error)
-      }
+      console.error(error)
     }
     if (!isObject(data)) return undefined as any
     if (data.timestamp && data.maxAge) {
       const now = new Date().getTime()
-      const maxAge = ms(data.maxAge)
+      const maxAge = Number(ms(data.maxAge))
       if (now - data.timestamp > maxAge) {
         window.localStorage.removeItem(key)
         return undefined as any

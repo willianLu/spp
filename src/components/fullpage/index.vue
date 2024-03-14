@@ -24,27 +24,21 @@
         :key="index"
         @click="handleChangePage(index)"
       >
-        <span :class="{ 'fullpage-active': index === $index }"></span>
+        <span :class="{ 'fullpage-active': index === active }"></span>
       </li>
     </ul>
   </section>
 </template>
 <script setup lang="ts">
-import { ref, watchEffect, watch, computed } from 'vue'
+import { ref, watchEffect, watch, computed, onMounted, nextTick } from 'vue'
 import { useWindowSize } from '@vueuse/core'
-
-const props = defineProps({
-  pageCount: {
-    type: Number,
-    default: 0
-  }
-})
 // 是否支持touch事件
 const isTouch = ref('ontouchstart' in document.documentElement)
 const fullpage = ref()
 // ELEMENT
 const element = ref()
 const height = ref(0)
+const pageCount = ref(0)
 watchEffect(() => {
   if (fullpage.value) {
     height.value = fullpage.value.clientHeight
@@ -53,7 +47,13 @@ watchEffect(() => {
     element.value.style.transform = transformScroll.value
   }
 })
-
+onMounted(() => {
+  nextTick(() => {
+    if (element.value) {
+      pageCount.value = element.value.children.length
+    }
+  })
+})
 //HEIGHT
 const rect = useWindowSize()
 watch(rect.height, () => {
@@ -62,7 +62,7 @@ watch(rect.height, () => {
   height.value = fullpage.value.clientHeight
 })
 const transformScroll = computed(() => {
-  return `translateY(-${$index.value * height.value}px)`
+  return `translateY(-${active.value * height.value}px)`
 })
 
 // ISTRANSTION  CANRUN
@@ -119,18 +119,18 @@ function handleTouchEnd() {
   handlePageScroll()
 }
 
-//$INDEX
-const $index = ref(0) //索引控制第几个显示
+// 当前激活的下标
+const active = ref(0) //索引控制第几个显示
 // 下一个
 function next() {
-  if ($index.value < props.pageCount - 1) {
-    $index.value++
+  if (active.value < pageCount.value - 1) {
+    active.value++
   }
 }
 // 上一个
 function last() {
-  if ($index.value >= 1) {
-    $index.value--
+  if (active.value >= 1) {
+    active.value--
   }
 }
 
@@ -138,7 +138,7 @@ function last() {
 function handleChangePage(index: number) {
   // 点击切换时需要开启动画
   isTranstion.value = false
-  $index.value = index
+  active.value = index
 }
 </script>
 <style lang="scss" scoped>
