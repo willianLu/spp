@@ -32,8 +32,9 @@
 <script setup lang="ts">
 import { ref, watchEffect, watch, computed, onMounted, nextTick } from 'vue'
 import { useWindowSize } from '@vueuse/core'
+import { isSupportTouch } from '@/utils/util'
 // 是否支持touch事件
-const isTouch = ref('ontouchstart' in document.documentElement)
+const isTouch = ref(isSupportTouch())
 const fullpage = ref()
 // ELEMENT
 const element = ref()
@@ -54,7 +55,7 @@ onMounted(() => {
     }
   })
 })
-//HEIGHT
+
 const rect = useWindowSize()
 watch(rect.height, () => {
   // 高度变化时需要关闭动画

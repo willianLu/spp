@@ -693,6 +693,11 @@ concat-map@0.0.1:
   resolved "https://r2.cnpmjs.org/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
   integrity sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==
 
+confetti-js@^0.0.18:
+  version "0.0.18"
+  resolved "https://r2.cnpmjs.org/confetti-js/-/confetti-js-0.0.18.tgz#1ecdc74f78cd65e6a549becb94315f2a21900022"
+  integrity sha512-0B7pYmZGBZuBkN32ydjWRpJLfRUT9KZYkQKkC4SGrAsUq0XE2DLY5foCWBXMXXVg7sFKs3qIb+qsDx1eFTeSvA==
+
 conventional-commit-types@^2.0.0:
   version "2.3.0"
   resolved "https://r2.cnpmjs.org/conventional-commit-types/-/conventional-commit-types-2.3.0.tgz#bc3c8ebba0a9e4b3ecc548f1d0674e251ab8be22"

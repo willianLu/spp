@@ -72,13 +72,19 @@ function handleInit() {
       name: '全屏滚动',
       desc: '滚动特效，全屏滚动',
       href: '/fullpage'
+    },
+    {
+      name: '登录页',
+      desc: '登录页，特效背景',
+      href: '/login'
+    },
+    {
+      name: '图片懒加载',
+      desc: '图片懒加载',
+      href: '/img/lazy'
     }
   ]
-  const arr = new Array(4).fill({
-    name: '敬请期待',
-    desc: '未来科技，开发中...'
-  })
-  list.value = cArr.concat(arr)
+  list.value = cArr
 }
 handleInit()
 function toPage(item: List) {

@@ -15,6 +15,14 @@ const routes: RouteRecordRaw[] = [
     path: '/fullpage',
     name: 'FullPage',
     component: () => import('@/views/Fullpage.vue')
+  },
+  {
+    path: '/login',
+    component: () => import('@/views/Login.vue')
+  },
+  {
+    path: '/img/lazy',
+    component: () => import('@/views/common/ImgLazy.vue')
   }
 ]
 

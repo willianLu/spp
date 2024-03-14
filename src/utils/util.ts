@@ -143,3 +143,8 @@ export function pxToRem(count: string | number, viewportWidth?: number) {
   }
   return count
 }
+
+// 是否支持touch事件
+export function isSupportTouch() {
+  return 'ontouchstart' in document.documentElement
+}

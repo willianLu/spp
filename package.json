@@ -12,6 +12,7 @@
   "dependencies": {
     "@vueuse/core": "^10.9.0",
     "axios": "^1.1.2",
+    "confetti-js": "^0.0.18",
     "element-plus": "^2.6.1",
     "js-cookie": "^3.0.5",
     "pinia": "^2.0.29",
