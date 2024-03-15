@@ -52,6 +52,11 @@ onMounted(() => {
   nextTick(() => {
     if (element.value) {
       pageCount.value = element.value.children.length
+      for(let i = 0; i < element.value.children.length; i ++) {
+        const item = element.value.children[i]
+        item.style.width = "100%";
+        item.style.height = "100%"
+      }
     }
   })
 })
@@ -165,10 +170,6 @@ function handleChangePage(index: number) {
     width: 100%;
     height: 100%;
     transition: all ease-in-out 1s;
-    & > * {
-      width: 100%;
-      height: 100%;
-    }
   }
   .fullpage-aside {
     position: absolute;
