@@ -21,8 +21,16 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/views/Login.vue')
   },
   {
+    path: '/icons',
+    component: () => import('@/views/Icon.vue')
+  },
+  {
     path: '/img/lazy',
     component: () => import('@/views/common/ImgLazy.vue')
+  },
+  {
+    path: '/waterfall',
+    component: () => import('@/views/common/Waterfall.vue')
   }
 ]
 

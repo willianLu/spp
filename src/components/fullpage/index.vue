@@ -52,10 +52,10 @@ onMounted(() => {
   nextTick(() => {
     if (element.value) {
       pageCount.value = element.value.children.length
-      for(let i = 0; i < element.value.children.length; i ++) {
+      for (let i = 0; i < element.value.children.length; i++) {
         const item = element.value.children[i]
-        item.style.width = "100%";
-        item.style.height = "100%"
+        item.style.width = '100%'
+        item.style.height = '100%'
       }
     }
   })

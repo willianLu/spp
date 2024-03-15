@@ -82,6 +82,11 @@ function handleInit() {
       name: '图片懒加载',
       desc: '图片懒加载',
       href: '/img/lazy'
+    },
+    {
+      name: '瀑布流',
+      desc: '流式布局，瀑布格式',
+      href: '/waterfall'
     }
   ]
   list.value = cArr
