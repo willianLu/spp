@@ -148,3 +148,13 @@ export function pxToRem(count: string | number, viewportWidth?: number) {
 export function isSupportTouch() {
   return 'ontouchstart' in document.documentElement
 }
+
+// 字符串转化成，字符串ID
+export function stringToId(str: string, radix = 36) {
+  let eStr = ''
+  for (let i = 0; i < str.length; i++) {
+    eStr += str.charCodeAt(i)
+  }
+  console.log(str)
+  return Number(eStr.trim()).toString(radix)
+}

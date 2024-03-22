@@ -7,6 +7,7 @@ import svgLoader from 'vite-svg-loader'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import Markdown from 'vite-plugin-md'
 
 const isDev = process.env.NODE_ENV === 'develpoment'
 
@@ -22,7 +23,10 @@ export default defineConfig({
     }
   },
   plugins: [
-    vue(),
+    vue({
+      include: [/\.vue$/, /\.md$/]
+    }),
+    Markdown(),
     AutoImport({
       resolvers: [ElementPlusResolver()]
     }),

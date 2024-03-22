@@ -87,6 +87,11 @@ function handleInit() {
       name: '瀑布流',
       desc: '流式布局，瀑布格式',
       href: '/waterfall'
+    },
+    {
+      name: '博客',
+      desc: '日常文章，文档等',
+      href: '/blog'
     }
   ]
   list.value = cArr

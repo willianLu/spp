@@ -14,8 +14,12 @@
 import { ref, onMounted } from 'vue'
 import PageLayout from '@/components/page/layout.vue'
 import Img1 from '@/assets/images/img-01.jpg'
+interface List {
+  type: string
+  desc: string
+}
 // 浏览器原生支持，利用img标签的loading属性实现懒加载
-const list: any = []
+const list: List[] = []
 function handleInit() {
   const types = ['large', 'middle', 'samll']
   const descs = [
