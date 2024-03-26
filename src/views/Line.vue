@@ -1,5 +1,5 @@
 <template>
-  <PageLayout>
+  <PageLayout :fullpage="false">
     <div class="line-wrap">
       <h3>制作线盒</h3>
       <div class="desc">标尺制作盒子，算法计算</div>
@@ -95,9 +95,6 @@ function handleMouseLeave() {
 </script>
 <style lang="scss" scoped>
 .line-wrap {
-  margin: 0 auto;
-  padding: 16px;
-  max-width: 1200px;
   text-align: center;
   line-height: 24px;
   h3 {

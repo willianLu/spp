@@ -10,7 +10,14 @@ body {
 }
 
 .markdown-body {
-  padding: 32px 16px;
-  margin: 0 auto !important;
-  max-width: 1000px;
+  padding: 16px;
+}
+
+.markdown-img-center {
+  display: block;
+  margin: 0 auto;
+}
+
+.page-blog-wrap {
+  --main-background: #f2f3f5;
 }

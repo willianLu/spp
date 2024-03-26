@@ -2,21 +2,21 @@
   <PageLayout>
     <div class="hero-wrap">
       <h1>
-        <span>新时代</span><br />
-        JavaScript 脚手架
+        <span>杂七杂八</span><br />
+        搜集各种好玩的东东0_0
       </h1>
       <div class="hero-tip">
-        易学易用，性能出色，适用场景丰富的 Web 前端框架。
+        基于前端开发，收集各种特效，书写博客，分享技术与生活。
       </div>
       <div>
         <a href="#/">
-          <span>快速上手</span>
+          <span>快速抽奖</span>
           <SvgIcon name="right-arrow"></SvgIcon>
         </a>
       </div>
     </div>
     <div class="express-wrap">
-      <p>中国神龙</p>
+      <p>-- 集齐七颗龙珠，召唤神龙 --</p>
       <img src="@/assets/images/loong.png" />
     </div>
     <div class="content-wrap">
@@ -108,7 +108,7 @@ function toPage(item: List) {
   padding: 96px 32px;
   text-align: center;
   h1 {
-    line-height: 1.2;
+    line-height: 1.5;
     font-size: 64px;
     font-weight: bold;
 
@@ -138,8 +138,32 @@ function toPage(item: List) {
     font-size: 16px;
     font-weight: 600;
     color: #fff;
+    overflow: hidden;
     svg {
       margin-left: 5px;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.5);
+      opacity: 0;
+      animation: ripple 1s ease-out infinite;
+    }
+    @keyframes ripple {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        width: 200px;
+        height: 200px;
+        opacity: 0;
+      }
     }
   }
   a:hover {
@@ -147,15 +171,14 @@ function toPage(item: List) {
   }
 }
 .express-wrap {
-  padding: 12px 24px;
+  padding: 16px 24px;
   border-top: 1px solid rgba(60, 60, 60, 0.12);
   border-bottom: 1px solid rgba(60, 60, 60, 0.12);
   text-align: center;
-  line-height: 34px;
   font-size: 13px;
   img {
     display: block;
-    margin: 0 auto;
+    margin: 8px auto 0;
     width: 150px;
   }
 }

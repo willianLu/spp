@@ -1,5 +1,5 @@
 <template>
-  <PageLayout>
+  <PageLayout :fullpage="false">
     <div class="game-wrap">
       <h3>拼图游戏</h3>
       <div class="desc">轻松时刻，拼图小游戏</div>
@@ -337,9 +337,6 @@ function handleAnimation(el: HTMLLIElement) {
 </script>
 <style lang="scss" scoped>
 .game-wrap {
-  margin: 0 auto;
-  padding: 16px;
-  max-width: 1200px;
   text-align: center;
   line-height: 24px;
   h3 {

@@ -1,7 +1,9 @@
 <template>
   <header class="page-header">
     <section>
-      <div class="page-header-left">Spp</div>
+      <div class="page-header-left">
+        <img src="@/assets/images/logo.png" @click="toHome" />
+      </div>
       <div class="page-header-right">
         <ul>
           <li :class="{ active: route.path === '/' }">
@@ -16,8 +18,12 @@
   </header>
 </template>
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 const route = useRoute()
+const router = useRouter()
+function toHome() {
+  router.push({ path: '/' })
+}
 </script>
 <style lang="scss" scoped>
 .page-header {
@@ -33,6 +39,10 @@ const route = useRoute()
     color: #213547;
   }
   &-left {
+    img {
+      width: 100px;
+      cursor: pointer;
+    }
     font-size: 16px;
     font-weight: 500;
   }

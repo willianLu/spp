@@ -1,5 +1,5 @@
 <template>
-  <PageLayout>
+  <PageLayout :fullpage="false">
     <div class="icon-container">
       <div v-for="(item, index) in list" :key="index" class="item">
         <SvgIcon :name="item" />
@@ -27,9 +27,6 @@ Object.keys(modules).forEach((key: string) => {
 </script>
 <style lang="scss" scoped>
 .icon-container {
-  padding: 16px;
-  margin: 0 auto;
-  max-width: 1200px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   grid-auto-rows: 100px;

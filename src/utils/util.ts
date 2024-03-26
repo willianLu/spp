@@ -155,6 +155,7 @@ export function stringToId(str: string, radix = 36) {
   for (let i = 0; i < str.length; i++) {
     eStr += str.charCodeAt(i)
   }
-  console.log(str)
-  return Number(eStr.trim()).toString(radix)
+  eStr = Number(eStr.trim()).toString(radix)
+  // 将尾部的0进行替换，减少id长度
+  return eStr.replace(/0000/g, '-').replace(/----/g, '=')
 }

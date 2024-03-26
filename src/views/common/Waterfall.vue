@@ -1,5 +1,5 @@
 <template>
-  <PageLayout>
+  <PageLayout :fullpage="false">
     <ul ref="box" class="waterfall-wrap">
       <li v-for="(item, index) in list" :key="index">
         <div class="img-item" :class="item.type">
@@ -48,9 +48,6 @@ onMounted(() => {
 </script>
 <style lang="scss" scoped>
 .waterfall-wrap {
-  padding: 16px;
-  margin: 0 auto;
-  max-width: 1200px;
   display: grid;
   grid-template-columns: repeat(auto-fit, 180px);
   column-gap: 10px;

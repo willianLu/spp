@@ -1,5 +1,5 @@
 import { stringToId } from '@/utils/util'
-interface BlogItem {
+export interface BlogItem {
   key: string
   title: string
   date: string

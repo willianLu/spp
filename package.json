@@ -16,6 +16,7 @@
     "element-plus": "^2.6.1",
     "github-markdown-css": "^5.5.1",
     "js-cookie": "^3.0.5",
+    "lodash-es": "^4.17.21",
     "pinia": "^2.0.29",
     "vue": "^3.2.37",
     "vue-router": "^4.1.6"
