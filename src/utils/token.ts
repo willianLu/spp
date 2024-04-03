@@ -1,10 +1,9 @@
 import Cookies from 'js-cookie'
-import Env from '@/env'
 
 const TOKEN = 'AUTH_TOKEN'
 
 export function setToken(token: string) {
-  return Cookies.set(TOKEN, token, { domain: Env.cookieDomin })
+  return Cookies.set(TOKEN, token)
 }
 
 export function getToken() {

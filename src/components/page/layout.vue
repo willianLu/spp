@@ -47,11 +47,15 @@ defineExpose({
 <style lang="scss" scoped>
 .page-main-content {
   position: relative;
-  background-color: var(--main-background);
+  background: var(--main-background);
+  & > div {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+  }
   &:not(.page-fullpage) > div {
     margin: 0 auto;
     padding: 16px 0;
-    width: 100%;
     max-width: 1080px;
   }
 }

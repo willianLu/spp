@@ -27,7 +27,7 @@ function toHome() {
 </script>
 <style lang="scss" scoped>
 .page-header {
-  border-bottom: 1px solid rgba(60, 60, 60, 0.12);
+  box-shadow: 0 2px 10px 0 rgba(60, 60, 60, 0.12);
   section {
     margin: 0 auto;
     padding: 0 16px;

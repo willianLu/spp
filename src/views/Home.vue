@@ -9,7 +9,7 @@
         基于前端开发，收集各种特效，书写博客，分享技术与生活。
       </div>
       <div>
-        <a href="#/">
+        <a href="#/special/turntable">
           <span>快速抽奖</span>
           <SvgIcon name="right-arrow"></SvgIcon>
         </a>
@@ -37,13 +37,13 @@
   </PageLayout>
 </template>
 <script setup lang="ts">
-defineOptions({
-  name: 'HomePage'
-})
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import PageLayout from '@/components/page/layout.vue'
 import SvgIcon from '@/components/svg-icon.vue'
+defineOptions({
+  name: 'HomePage'
+})
 interface List {
   name: string
   desc: string
@@ -80,7 +80,7 @@ function handleInit() {
     },
     {
       name: '图片懒加载',
-      desc: '图片懒加载',
+      desc: '浏览器原生支持，技术分享',
       href: '/img/lazy'
     },
     {
@@ -90,8 +90,18 @@ function handleInit() {
     },
     {
       name: '博客',
-      desc: '日常文章，文档等',
+      desc: '日常生活，技术博客，文档共享',
       href: '/blog'
+    },
+    {
+      name: '星空',
+      desc: '仰望星空，迷恋遥远的深邃',
+      href: '/special/star'
+    },
+    {
+      name: '大转盘',
+      desc: '一起来转盘，转出好心情',
+      href: '/special/turntable'
     }
   ]
   list.value = cArr
@@ -171,7 +181,7 @@ function toPage(item: List) {
   }
 }
 .express-wrap {
-  padding: 16px 24px;
+  padding: 32px 24px;
   border-top: 1px solid rgba(60, 60, 60, 0.12);
   border-bottom: 1px solid rgba(60, 60, 60, 0.12);
   text-align: center;
@@ -183,14 +193,14 @@ function toPage(item: List) {
   }
 }
 .content-wrap {
-  padding: 44px 32px;
+  padding: 56px 32px;
   margin: 0 auto;
-  max-width: 848px;
+  max-width: 1080px;
   ul {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-auto-rows: 120px;
-    grid-gap: 16px;
+    grid-gap: 20px;
   }
   li {
     text-align: center;

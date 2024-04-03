@@ -4,7 +4,10 @@
   </RouterView>
 </template>
 <script setup lang="ts">
-//
+import useHomeStore from '@/store/index'
+
+const homeStore = useHomeStore()
+homeStore.getLocationData()
 </script>
 <style>
 #app {

@@ -18,8 +18,10 @@
     },
     "types": [
       "vite-svg-loader"
-    ]
+    ],
+    "noImplicitAny": false
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/mock/**/*.ts"],
+  "ts-node": { "esm": true },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

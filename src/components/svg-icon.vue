@@ -4,7 +4,7 @@
 <script lang="ts">
 import { Component } from 'vue'
 // svg模块
-const modules = import.meta.glob('@/icons/*.svg', { eager: true })
+const modules = import.meta.glob('@/assets/icons/*.svg', { eager: true })
 
 // 将资源文件转换成组件
 const components: Record<string, Component> = {}

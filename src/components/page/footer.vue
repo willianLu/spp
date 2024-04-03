@@ -8,7 +8,7 @@
 </script>
 <style lang="scss" scoped>
 .page-footer {
-  background-color: #f9f9f9;
+  background-color: #fff;
   section {
     margin: 0 auto;
     padding: 24px 16px;
@@ -16,7 +16,6 @@
     text-align: center;
     line-height: 20px;
     font-size: 12px;
-    color: rgba(60, 60, 60, 0.7);
   }
 }
 </style>

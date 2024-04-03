@@ -17,7 +17,7 @@ import SvgIcon from '@/components/svg-icon.vue'
 // svg文件名集合
 const list = ref<string[]>([])
 // 解析svg文件名称
-const modules = import.meta.glob('@/icons/*.svg')
+const modules = import.meta.glob('@/assets/icons/*.svg')
 Object.keys(modules).forEach((key: string) => {
   const name = key.match(/.*\/(.+)\.svg$/)
   if (name !== null) {

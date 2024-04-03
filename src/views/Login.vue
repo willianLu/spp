@@ -3,8 +3,7 @@
     <canvas id="my-canvas"></canvas>
     <div class="login-box">
       <div class="logo flex-center">
-        <img src="../assets/vue.svg" />
-        <span>后台管理</span>
+        <img src="../assets/images/logo.png" />
       </div>
       <el-input
         v-model="phone"
@@ -75,31 +74,28 @@ watch(rect.width, () => {
   z-index: 1;
   width: 100%;
   height: 100%;
+  background: url(@/assets/images/noise.svg);
 }
 #my-canvas {
   position: absolute;
   left: 0;
   top: 0;
-  z-index: -1;
   width: 100%;
   height: 100%;
 }
 .login-box {
+  position: relative;
   margin: 100px 16px;
-  padding: 32px;
-  max-width: 400px;
+  padding: 32px 56px;
+  max-width: 360px;
   width: 100%;
   background-color: #fff;
-  border: 1px solid rgba(60, 60, 67, 0.12);
-  border-radius: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px 0 rgba(95, 144, 254, 0.2);
   .logo {
     margin: 32px auto 68px;
-    font-size: 36px;
-    font-weight: bold;
     img {
-      margin-right: 12px;
-      display: block;
-      width: 60px;
+      width: 200px;
     }
   }
 }

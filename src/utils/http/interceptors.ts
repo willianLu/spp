@@ -9,8 +9,8 @@ const request = {
    * @param {object} options 请求配置
    * @returns {object} 处理后的配置数据
    */
-  onFufilled(config: CustomAxiosRequestConfig) {
-    return handleRequestRule(config)
+  onFufilled(config: any): any {
+    return handleRequestRule(config as CustomAxiosRequestConfig)
   },
   /**
    * @description 发送请求错误拦截

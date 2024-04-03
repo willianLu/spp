@@ -8,7 +8,10 @@
     <div ref="blog" class="page-blog-container">
       <component :is="componentName" />
       <ul class="page-blog-right">
-        <li class="blog-catalog">
+        <li class="blog-right-item">
+          <StatusBar></StatusBar>
+        </li>
+        <li class="blog-catalog blog-right-item">
           <div class="blog-title">目录</div>
           <ul class="catalog-wrap">
             <li
@@ -24,20 +27,34 @@
             </li>
           </ul>
         </li>
+        <li v-if="relevance.length" class="blog-right-item relevance-wrap">
+          <div class="blog-title">相关文章</div>
+          <div
+            v-for="item in relevance"
+            :key="item.key"
+            class="relevance-item"
+            @click="toOtherBlog(item)"
+          >
+            {{ item.title }}
+          </div>
+        </li>
       </ul>
     </div>
   </PageLayout>
 </template>
 <script lang="ts">
-import { ref, onMounted, type Component } from 'vue'
-import { useRoute } from 'vue-router'
+import { ref, onMounted, type Component, computed, watch, nextTick } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import PageLayout from '@/components/page/layout.vue'
+import StatusBar from '@/components/status-bar.vue'
 import 'github-markdown-css'
 import { stringToId } from '@/utils/util'
 import { throttle } from 'lodash-es'
+import { BlogData, BlogMap, BlogItem } from '@/blogs'
 
 const BlogComponents: Record<string, Component> = {
-  PageLayout
+  PageLayout,
+  StatusBar
 }
 const modules = import.meta.glob('../../blogs/**/*.md', { eager: true })
 Object.keys(modules).forEach((key: string) => {
@@ -68,7 +85,33 @@ export default {
   components: BlogComponents,
   setup() {
     const route = useRoute()
+    const router = useRouter()
     const componentName = ref('Blog-' + route.params.id)
+    const info = ref<Record<string, any>>({})
+    const relevance = computed(() => {
+      const arr: BlogItem[] = []
+      ;(info.value.relevance || []).forEach(key => {
+        const index = BlogMap[key]
+        if (index !== undefined) {
+          arr.push(BlogData[index])
+        }
+      })
+      return arr
+    })
+    watch(route, () => {
+      componentName.value = 'Blog-' + route.params.id
+      handleInit()
+      nextTick(() => {
+        handleParseCatalog()
+      })
+    })
+    function handleInit() {
+      const index = BlogMap[route.params.id as string]
+      if (index !== undefined) {
+        info.value = BlogData[index]
+      }
+    }
+    handleInit()
     const list = ref<CatalogItem[]>([])
     const current = ref(-1)
     const layout = ref()
@@ -181,14 +224,21 @@ export default {
         catalogTimer = null
       }, 1000)
     }
+    function toOtherBlog(item) {
+      router.push({
+        path: '/blog/' + item.key
+      })
+    }
     return {
       componentName,
       list,
+      relevance,
       layout,
       blog,
       current,
       handleScroll,
-      handleCheckCatalog
+      handleCheckCatalog,
+      toOtherBlog
     }
   }
 }
@@ -201,13 +251,19 @@ export default {
 }
 .page-blog-right {
   position: relative;
-  & > li {
+  .blog-right-item {
     background-color: #fff;
     border-radius: 4px;
+  }
+  .blog-right-item + .blog-right-item {
+    margin-top: 20px;
   }
   .blog-catalog {
     position: sticky;
     top: 16px;
+  }
+  .relevance-wrap {
+    padding-bottom: 20px;
   }
 }
 .blog-title {
@@ -216,6 +272,16 @@ export default {
   border-bottom: 1px solid #f7f8fa;
   font-size: 16px;
   font-weight: bold;
+}
+.relevance-item {
+  padding: 0 16px;
+  line-height: 32px;
+  font-size: 14px;
+  color: #333;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  cursor: pointer;
 }
 .catalog-wrap {
   padding: 12px 0;

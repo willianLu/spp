@@ -39,7 +39,7 @@ export const local = {
    * @param {string} key 键名
    * @returns {any}
    */
-  getItem<T = any>(key: string): T {
+  getItem<T>(key: string): T | undefined {
     const res = window.localStorage.getItem(key)
     let data!: StorageData
     try {
@@ -47,16 +47,16 @@ export const local = {
     } catch (error) {
       console.error(error)
     }
-    if (!isObject(data)) return undefined as any
+    if (!isObject(data)) return
     if (data.timestamp && data.maxAge) {
       const now = new Date().getTime()
       const maxAge = Number(ms(data.maxAge))
       if (now - data.timestamp > maxAge) {
         window.localStorage.removeItem(key)
-        return undefined as any
+        return
       }
     }
-    return data.value as any
+    return data.value
   },
   /**
    * @description 移除对应健名的存储值

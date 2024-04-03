@@ -159,3 +159,52 @@ export function stringToId(str: string, radix = 36) {
   // 将尾部的0进行替换，减少id长度
   return eStr.replace(/0000/g, '-').replace(/----/g, '=')
 }
+
+export interface FormatDateOptions {
+  isAddZero?: boolean
+}
+// 时间格式化
+export function formatDate(
+  date: string | number | Date,
+  format = 'yyyy-MM-dd hh:mm:ss',
+  options?: FormatDateOptions
+) {
+  const isAddZero =
+    options?.isAddZero === undefined ? true : !!options.isAddZero
+  if (typeof date === 'string' || typeof date === 'number') {
+    date = new Date(date)
+  }
+  const _date = date as Date
+  function addZero(num: number) {
+    return num < 10 ? `0${num}` : `${num}`
+  }
+  return format.replace(
+    /(y{4})|(M{2})|(d{2})|(h{2})|(m{2})|(s{2})/g,
+    (str: string, ...args: any[]) => {
+      if (str === 'yyyy' && args[0]) {
+        return `${_date.getFullYear()}`
+      }
+      if (str === 'MM' && args[1]) {
+        const month = _date.getMonth() + 1
+        return isAddZero ? addZero(month) : `${month}`
+      }
+      if (str === 'dd' && args[2]) {
+        const day = _date.getDate()
+        return isAddZero ? addZero(day) : `${day}`
+      }
+      if (str === 'hh' && args[3]) {
+        const hour = _date.getHours()
+        return isAddZero ? addZero(hour) : `${hour}`
+      }
+      if (str === 'mm' && args[4]) {
+        const minute = _date.getMinutes()
+        return isAddZero ? addZero(minute) : `${minute}`
+      }
+      if (str === 'ss' && args[5]) {
+        const second = _date.getSeconds()
+        return isAddZero ? addZero(second) : `${second}`
+      }
+      return ''
+    }
+  )
+}
