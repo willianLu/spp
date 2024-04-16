@@ -8,7 +8,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Markdown from 'vite-plugin-md'
-import VitePluginTest from 'vite-plugin-simple-mock'
+import VitePluginSimpleMock from 'vite-plugin-simple-mock'
 import Mock from './mock/index'
 
 const isDev = process.env.NODE_ENV === 'develpoment'
@@ -18,10 +18,10 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     proxy: {
-      '/tc-api/': {
-        target: 'http://192.168.11.144:7001',
-        rewrite: path => path.replace(/^\/tc-api/, '')
-      }
+      // '/tc-api/': {
+      //   target: 'http://192.168.11.144:7001',
+      //   rewrite: path => path.replace(/^\/tc-api/, '')
+      // }
     }
   },
   plugins: [
@@ -41,7 +41,7 @@ export default defineConfig({
       }
     }),
     svgLoader(),
-    VitePluginTest(Mock, {
+    VitePluginSimpleMock(Mock, {
       proxy: [/^\/api\//, /^\/server\//, /^\/qtapi\//]
     })
   ],
@@ -50,6 +50,7 @@ export default defineConfig({
       '@': resolve(__dirname, './src') // 把 @ 指向到 src 目录去
     }
   },
+  base: './',
   build: {
     rollupOptions: {
       output: {
@@ -79,9 +80,9 @@ export default defineConfig({
             return 'svg-icons'
           }
           // 第三方modules打包在一起
-          if (/node_modules/.test(id)) {
-            return 'vendor'
-          }
+          // if (/node_modules/.test(id)) {
+          //   return 'vendor'
+          // }
         }
       }
     }

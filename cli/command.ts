@@ -16,7 +16,7 @@ function execDeploy() {
 
 export async function deploy() {
   if (!(await checkGitRepository())) {
-    Log.warn('不允许构建部署')
+    return Log.warn('不允许构建部署')
   }
   Log.info('开始代码构建')
   await execa('npm', ['run', 'build'], {

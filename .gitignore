@@ -24,8 +24,3 @@ dist-ssr
 *.sln
 *.sw?
 .eslintcache
-
-# 文档启动缓存
-docs/.vitepress/cache
-# 文档打包输出目录
-docs/.vitepress/dist
