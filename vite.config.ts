@@ -8,6 +8,8 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Markdown from 'vite-plugin-md'
+import VitePluginTest from 'vite-plugin-simple-mock'
+import Mock from './mock/index'
 
 const isDev = process.env.NODE_ENV === 'develpoment'
 
@@ -38,7 +40,10 @@ export default defineConfig({
         cache: false
       }
     }),
-    svgLoader()
+    svgLoader(),
+    VitePluginTest(Mock, {
+      proxy: [/^\/api\//, /^\/server\//, /^\/qtapi\//]
+    })
   ],
   resolve: {
     alias: {

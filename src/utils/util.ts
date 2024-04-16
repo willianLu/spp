@@ -127,6 +127,15 @@ export function stringifyQuery(data: Record<string | number | symbol, any>) {
     .join('&')
 }
 
+export function buildFormData(data: Record<string | number | symbol, any>) {
+  if (!isObject(data)) return ''
+  const formData = new FormData()
+  Object.keys(data).forEach((key: string) => {
+    formData.set(key, JSON.stringify(data[key]))
+  })
+  return formData
+}
+
 /**
  * @description px 转换为 vw单位
  * @param {string | number} count 需要转换的数量

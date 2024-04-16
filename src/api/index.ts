@@ -15,3 +15,22 @@ export function queryWeatcherNow(data: any) {
     location: data.location
   })
 }
+
+// 请求测试
+export function queryUserInfo(data) {
+  return get('/api/user/info', data)
+}
+
+export function queryUserList(data) {
+  return post('/api/user/list', data, {
+    isFormData: true
+  })
+}
+
+export function queryOther(data) {
+  return post('/qtapi/user', data)
+}
+
+export function queryTest(data) {
+  return post('/server/api/user', data)
+}

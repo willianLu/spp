@@ -107,27 +107,42 @@ function handleInit() {
 }
 handleInit()
 
+/**
+ * 执行绘制操作，模拟一个随机数抽奖过程。
+ * 该函数首先随机决定一个延迟时间，然后生成一个随机的四个数字数组，并将这些数字进行排序和重新组合，
+ * 最后使用这个组合的数字去匹配一个预定义的列表，找到匹配的项并更新当前选中项。
+ * 该函数没有参数和返回值，因为它直接操作和修改组件的内部状态。
+ */
 async function execDraw() {
+  // 随机生成延迟时间（1-5秒）
   const count = Math.floor(Math.random() * 5) + 1
-  await delay(count * 1000)
+  await delay(count * 1000) // 等待随机时间
+
+  // 生成一个包含4个0-9之间随机数的数组
   const arr: number[] = []
   for (let i = 0; i < 4; i++) {
     arr.push(Math.floor(Math.random() * 10))
   }
+
+  // 计算数组元素总和，考虑每个数字的权重（位置）
   let total = 0
   arr
     .sort(() => {
-      return Math.floor(Math.random() * 10) - 7
+      return Math.floor(Math.random() * 10) - 7 // 使用随机方式排序数组
     })
     .forEach((item, i) => {
-      total += item * Math.pow(10, i)
+      total += item * Math.pow(10, i) // 计算总和
     })
+
+  // 在预定义的列表中查找匹配的项，并更新当前选中项
   list.value.some((item, index) => {
     if (item.min <= total && total <= item.max) {
-      current.value = index
+      current.value = index // 找到匹配项，更新当前选中项
       return true
     }
   })
+
+  // 如果没有找到匹配项，则将当前选中项重置为0
   if (current.value < 0) {
     current.value = 0
   }

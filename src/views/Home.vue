@@ -102,6 +102,11 @@ function handleInit() {
       name: '大转盘',
       desc: '一起来转盘，转出好心情',
       href: '/special/turntable'
+    },
+    {
+      name: 'T29',
+      desc: 'T29坦克3D模型',
+      href: '/special/tank'
     }
   ]
   list.value = cArr

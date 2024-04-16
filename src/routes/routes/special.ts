@@ -8,6 +8,10 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/special/turntable',
     component: () => import('@/views/special/turntable.vue')
+  },
+  {
+    path: '/special/tank',
+    component: () => import('@/views/special/tankModel.vue')
   }
 ]
 
