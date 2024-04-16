@@ -1,5 +1,5 @@
 import SimpleGit from 'simple-git'
-import { checkGitRepository } from './git.js'
+import { checkGitRepository, syncGitRepository } from './git.js'
 import Log from './log.js'
 import { execa } from 'execa'
 import { resolve, getDeployDate } from './util.js'
@@ -18,6 +18,7 @@ export async function deploy() {
   if (!(await checkGitRepository())) {
     return Log.warn('不允许构建部署')
   }
+  await syncGitRepository()
   Log.info('开始代码构建')
   await execa('npm', ['run', 'build'], {
     cwd: resolve(),
