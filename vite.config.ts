@@ -10,6 +10,7 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Markdown from 'vite-plugin-md'
 import VitePluginSimpleMock from 'vite-plugin-simple-mock'
 import Mock from './mock/index'
+import del from 'rollup-plugin-delete'
 
 const isDev = process.env.NODE_ENV === 'develpoment'
 
@@ -24,6 +25,7 @@ export default defineConfig({
       // }
     }
   },
+  assetsInclude: ['**/*.glb'],
   plugins: [
     vue({
       include: [/\.vue$/, /\.md$/]
@@ -43,6 +45,9 @@ export default defineConfig({
     svgLoader(),
     VitePluginSimpleMock(Mock, {
       proxy: [/^\/api\//, /^\/server\//, /^\/qtapi\//]
+    }),
+    del({
+      targets: ['./dist']
     })
   ],
   resolve: {
@@ -52,6 +57,7 @@ export default defineConfig({
   },
   base: './',
   build: {
+    emptyOutDir: true,
     rollupOptions: {
       output: {
         // chunk代码输入位置

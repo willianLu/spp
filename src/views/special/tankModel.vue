@@ -9,6 +9,7 @@ import PageLayout from '@/components/page/layout.vue'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import T29 from '@/assets/model/t29.glb'
 const t29 = ref()
 onMounted(() => {
   handleInit()
@@ -51,7 +52,7 @@ function handleInit() {
   camera.add(pointLight)
 
   // 模型加载
-  new GLTFLoader().load('/model/t29.glb', function (gltf) {
+  new GLTFLoader().load(T29, function (gltf) {
     model = gltf.scene
     scene.add(model)
     animate()
