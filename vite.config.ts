@@ -70,8 +70,11 @@ export default defineConfig({
           const index = name.lastIndexOf('.')
           const ext = name.substring(index + 1)
           // 图片类型文件存放在images文件夹下
-          if (/^[png|jpg|gif|jpeg|svg]$/.test(name.toLocaleLowerCase())) {
+          if (/^(png|jpg|gif|jpeg|svg)$/.test(ext)) {
             return `images/[name]-[hash].${ext}`
+          }
+          if (/^(ttf|woff|woff2)$/.test(ext)) {
+            return `fonts/[name]-[hash].${ext}`
           }
           return `${ext}/[name]-[hash].${ext}`
         },
@@ -82,7 +85,7 @@ export default defineConfig({
             return 'vue-vendor'
           }
           // svg icon 打包到一起
-          if (/icons\/(.)\.svg/.test(id)) {
+          if (/icons\/(.)\.svg$/.test(id)) {
             return 'svg-icons'
           }
           // 第三方modules打包在一起
