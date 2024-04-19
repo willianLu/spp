@@ -2424,6 +2424,11 @@ npm-run-path@^5.1.0:
   dependencies:
     path-key "^4.0.0"
 
+nprogress@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/nprogress/-/nprogress-0.2.0.tgz#cb8f34c53213d895723fcbab907e9422adbcafb1"
+  integrity sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==
+
 nth-check@^2.0.1, nth-check@^2.1.1:
   version "2.1.1"
   resolved "https://r.cnpmjs.org/nth-check/-/nth-check-2.1.1.tgz#c9eab428effce36cd6b92c924bdb000ef1f1ed1d"
@@ -3130,10 +3135,10 @@ vite-plugin-md@^0.21.5:
     markdown-it "^13.0.1"
     source-map-js "^1.0.2"
 
-vite-plugin-simple-mock@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/vite-plugin-simple-mock/-/vite-plugin-simple-mock-0.1.2.tgz#ad584f7cb2c1f03fe2a7dedbc3deb9a3156317c3"
-  integrity sha512-lWVZt/vH8jfJZuvsZHiQjf1OB3ooUOoPzPbphTkWnOfmChrRMvHvF1TqbXbunh7w8OBJSXe7O/gHBXhVtPqTCw==
+vite-plugin-simple-mock@^0.1.3:
+  version "0.1.3"
+  resolved "https://r.cnpmjs.org/vite-plugin-simple-mock/-/vite-plugin-simple-mock-0.1.3.tgz#8962355d87e09d2f25913850710cc17789c8eeef"
+  integrity sha512-YBcLLdEeXn4L7WECVvnXmtGl/oHtpo4N+7kuXoc9EioAUQAdhDl/pwfNaUS8I4LOS+Q7FbmkFNqHGj/QaYSHHw==
   dependencies:
     body-parser "^1.20.2"
     cookie-parser "^1.4.6"
