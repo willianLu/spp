@@ -9,8 +9,13 @@
           <li :class="{ active: route.path === '/' }">
             <router-link to="/">首页</router-link>
           </li>
-          <li :class="{ active: route.path === '/icons' }">
-            <router-link to="/icons">图标</router-link>
+          <li :class="{ active: route.path === '/blog' }">
+            <router-link to="/blog">博客</router-link>
+          </li>
+          <li>
+            <a href="https://github.com/willianLu/spp" target="_blank">
+              <SvgIcon class="icon-github" name="github" />
+            </a>
           </li>
         </ul>
       </div>
@@ -19,6 +24,7 @@
 </template>
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router'
+import SvgIcon from '@/components/svg-icon.vue'
 const route = useRoute()
 const router = useRouter()
 function toHome() {

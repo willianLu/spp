@@ -20,7 +20,7 @@
       <img src="@/assets/images/loong.png" />
     </div>
     <div class="content-wrap">
-      <ul>
+      <ul class="content-main">
         <li
           v-for="(item, index) in list"
           :key="index"
@@ -33,6 +33,23 @@
           </div>
         </li>
       </ul>
+      <div class="other-content">
+        <div class="other-title">NPM 包：</div>
+        <div class="other-link">
+          <a
+            href="https://www.npmjs.com/package/vite-plugin-simple-mock"
+            target="_blank"
+          >
+            vite-plugin-simple-mock
+          </a>
+          <a
+            href="https://www.npmjs.com/package/request-loading"
+            target="_blank"
+          >
+            request-loading
+          </a>
+        </div>
+      </div>
     </div>
   </PageLayout>
 </template>
@@ -107,6 +124,11 @@ function handleInit() {
       name: 'T29',
       desc: 'T29坦克3D模型',
       href: '/special/tank'
+    },
+    {
+      name: 'CSS莲花',
+      desc: 'CSS动画模拟莲花绽放',
+      href: '/special/lotus'
     }
   ]
   list.value = cArr
@@ -201,12 +223,12 @@ function toPage(item: List) {
   padding: 56px 32px;
   margin: 0 auto;
   max-width: 1080px;
-  ul {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-auto-rows: 120px;
-    grid-gap: 20px;
-  }
+}
+.content-main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-auto-rows: 120px;
+  grid-gap: 20px;
   li {
     text-align: center;
     background-color: #fff;
@@ -235,6 +257,26 @@ function toPage(item: List) {
     line-height: 24px;
     font-size: 13px;
     color: #999;
+  }
+}
+.other-content {
+  margin-top: 32px;
+  .other-title {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+  }
+  .other-link {
+    line-height: 28px;
+    a {
+      color: #999;
+    }
+    a:hover {
+      color: #1e80ff;
+    }
+    a + a {
+      margin-left: 12px;
+    }
   }
 }
 @media screen and (max-width: 768px) {

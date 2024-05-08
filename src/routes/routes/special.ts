@@ -12,6 +12,10 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/special/tank',
     component: () => import('@/views/special/tankModel.vue')
+  },
+  {
+    path: '/special/lotus',
+    component: () => import('@/views/special/lotus.vue')
   }
 ]
 
